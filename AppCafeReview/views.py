@@ -19,7 +19,7 @@ def create_review(request):
  
             if miFormulario.is_valid():
                   informacion = miFormulario.cleaned_data #convierte mi formulario en formato diccionario
-                  cafeteria = Cafeteria(nombreCafeteria=informacion["nombreCafeteria"], 
+                  cafeteria = Cafeteria(nombreCafeteria=informacion["Nombre Cafeteria"], 
                   puntajeCafeteria=informacion["Puntaje Cafeteria"],
                   puntajeServicio=informacion["Puntaje Servicio"],
                   puntajeAmbiente=informacion["Puntaje Ambiente"],
@@ -56,12 +56,12 @@ def edit_review(request, reviewer):
             editar.save()
         else:
             pass 
-            miFormulario=CafeteriaFormulario(initial={"nombreCafeteria":editar.nombreCafeteria,
-                                                      "puntajeCafeteria":editar.puntajeCafeteria,
-                                                      "puntajeServicio":editar.puntajeServicio,
-                                                      "fechaDeVisita":editar.fechaDeVisita,
-                                                      "comentario":editar.comentario,
-                                                      "nombreReviewer":editar.nombreReviewer})
+            miFormulario=CafeteriaFormulario(initial={"Nopmbre Cafeteria":editar.nombreCafeteria,
+                                                      "Puntaje Cafeteria":editar.puntajeCafeteria,
+                                                      "Puntaje Servicio":editar.puntajeServicio,
+                                                      "Fecha de Visita":editar.fechaDeVisita,
+                                                      "Comentario":editar.comentario,
+                                                      "Nombre Reviewer":editar.nombreReviewer})
     return render (request, )
 
 def register_user(request):
@@ -73,3 +73,20 @@ def register_user(request):
     else:
         miFormulario=UserCreationForm()
         return render(request,"AppCafeReview/registroUsuario.html", {"miFormulario":miFormulario})
+    
+def login_user(request):
+    if request.method == 'POST':
+        miFormulario = AuthenticationForm(request, data = request.POST)
+        if miFormulario.is_valid():
+            usuario=miFormulario.cleaned_data.GET("username")
+            contra=miFormulario.cleaned_data.GET("password")
+            miUsuario=authenticate(username=usuario, password=contra)
+            if miUsuario:
+                login(request, miUsuario)
+                return render (request, "AppCafeReview/verReviews.html")
+        else:
+            mensaje=f"Error. Usuario o contraseña incorrectos"
+            return render (request,"AppCafeReview/verReviews.html", {"mensaje": mensaje})
+    else:
+        miFormulario=AuthenticationForm()
+    return render(request, "AppCafeReview/login.html", {"miFormulario":miFormulario})

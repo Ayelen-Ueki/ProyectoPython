@@ -8,5 +8,6 @@ urlpatterns = [
     path("resultadoReviews/", results, name="results"),
     path("borrarReviewss/<reviewer>", delete_review, name="delete_review"), 
     path("editarReview/<reviewer>", edit_review, name="edit_review"),
-    path("registroUsuario/", register_user, name="register_user")
+    path("registroUsuario/", register_user, name="register_user"),
+    path("inicioSesionUsuario/", login_user, name="login_user"),
 ]
