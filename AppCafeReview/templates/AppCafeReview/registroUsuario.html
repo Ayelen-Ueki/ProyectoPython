@@ -1,0 +1,15 @@
+{% extends "AppCafeReview/padreForms.html" %}
+
+{% block tituloForm %}
+Registrate aquí!
+{% endblock %}
+
+{% block formulario %}
+    <form id="contactForm" action="" method="post" style="color: antiquewhite;"> {% csrf_token %}
+        <table>
+            {{miFormulario.as_table}}
+        </table>
+        <input type="submit" value="Enviar"> 
+    </form>
+{% endblock %}
+

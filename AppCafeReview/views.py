@@ -49,7 +49,7 @@ def delete_review(request, reviewer):
 def edit_review(request, reviewer):
     editar = Cafeteria.objects.get(reviewer=nombreReviewer)
     if request.method == 'POST':
-        miFormulario = editarFormulario (request.POST)
+        miFormulario = editarFormulario(request.POST)
         if miFormulario.is_valid():
             editardict=miFormulario.cleaned_data
             editar.reviewer=editardict["reviewer"]
@@ -69,7 +69,7 @@ def register_user(request):
         miFormulario=UserCreationForm(request.POST)
         if miFormulario.is_valid():
             miFormulario.save()
-            return render (request, ) #COMPLETAR con la ruta correspondiente
-        else:
-            miFormulario=UserCreationForm()
-        return render(request,"AppCafeReview/registroUsuario.html")
+            return render (request, "AppCafeReview/crearReview.html") 
+    else:
+        miFormulario=UserCreationForm()
+        return render(request,"AppCafeReview/registroUsuario.html", {"miFormulario":miFormulario})
