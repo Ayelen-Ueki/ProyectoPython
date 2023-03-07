@@ -42,14 +42,14 @@ def results(request):
     return render(request, "AppCafeReview/resultadoReviews.html",{"cafeBuscado":cafeBuscado, "resultadoCafe":resultadoCafe})
 
 def delete_review(request, reviewer): 
-    borrar = Cafeteria.objects.get(reviewer=nombreReviewer)
+    borrar = Cafeteria.objects.get(reviewer=Cafeteria.nombreReviewer)
     borrar.delete()
     return render(request,"AppCafeReview/crearReview.html" )
 
 def edit_review(request, reviewer):
-    editar = Cafeteria.objects.get(reviewer=nombreReviewer)
+    editar = Cafeteria.objects.get(reviewer=Cafeteria.nombreReviewer)
     if request.method == 'POST':
-        miFormulario = editarFormulario(request.POST)
+        miFormulario = EditarFormulario(request.POST)
         if miFormulario.is_valid():
             editardict=miFormulario.cleaned_data
             editar.reviewer=editardict["reviewer"]
