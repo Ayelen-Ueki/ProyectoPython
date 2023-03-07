@@ -1,6 +1,8 @@
 from django.urls import path
 from AppCafeReview.views import *
 from django.contrib.auth.views import LogoutView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path ("verReviews/", view_reviews, name="view_reviews"), 
@@ -13,3 +15,5 @@ urlpatterns = [
     path("inicioSesionUsuario/", login_user, name="login_user"),
     path("logout/", logout.view.as_view('logout'), name="logout")
 ]
+
+urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
