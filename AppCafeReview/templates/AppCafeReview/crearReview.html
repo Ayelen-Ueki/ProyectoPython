@@ -1,14 +1,16 @@
-{% extends "AppCafeReview/padreForms.html" %}
+{% extends "AppCafeReview/padre.html" %}
 
 {% block tituloForm %}
 Deja tu review!
 {% endblock %}
 
 {% block formulario %}
-    <form id="contactForm" action="" method="post" style="color: antiquewhite;"> {% csrf_token %}
+    <form id="contactForm" action="" method="post"> {% csrf_token %}
         <table>
             {{miFormulario.as_table}}
         </table>
-        <input type="submit" value="Enviar"> 
+        {% block botonForm %}
+            Enviar
+        {% endblock %}
     </form>
 {% endblock %}
