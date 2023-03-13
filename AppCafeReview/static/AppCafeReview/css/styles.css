@@ -10,7 +10,7 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-:root {
+ :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
@@ -32,9 +32,9 @@
   --bs-gray-600: #6c757d;
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
-  --bs-gray-900: #955037;
+  --bs-gray-900: #212529;
   --bs-primary: #1abc9c;
-  --bs-secondary: #955037;
+  --bs-secondary: #2c3e50;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
   --bs-warning: #ffc107;
@@ -63,6 +63,7 @@
   --bs-body-color: #212529;
   --bs-body-bg: #fff;
 }
+
 
 *,
 *::before,
@@ -236,11 +237,11 @@ sup {
 }
 
 a {
-  color: #1abc9c;
+  color: #ff6316;
   text-decoration: underline;
 }
 a:hover {
-  color: #15967d;
+  color: #df3f32;
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {

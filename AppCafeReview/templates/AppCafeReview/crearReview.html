@@ -5,12 +5,10 @@ Deja tu review!
 {% endblock %}
 
 {% block formulario %}
-    <form id="contactForm" action="" method="post"> {% csrf_token %}
+    <form id="contactForm" action="" method="POST"> {% csrf_token %}
         <table>
             {{miFormulario.as_table}}
         </table>
-        {% block botonForm %}
-            Enviar
-        {% endblock %}
+        <input class="btn btn-primary btn-xl disabled" id="submitButton" type="submit" value="Enviar">
     </form>
 {% endblock %}
