@@ -21,8 +21,8 @@ class Owner(models.Model):
     nombreCafeteria = models.CharField (max_length=50)
     descripcion = models.CharField(max_length=200)
     
-class AvatarReviewer (models.Model):
-    reviewer=models.ForeignKey(Reviewer, on_delete=models.CASCADE)
+class Avatar (models.Model):
+    user=models.ForeignKey(Reviewer, on_delete=models.CASCADE)
     avatar=models.ImageField(upload_to="avatares", null=True, blank=True)
 
 

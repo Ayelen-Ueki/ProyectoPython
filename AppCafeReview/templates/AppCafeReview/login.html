@@ -1,14 +1,15 @@
-{% extends "AppCafeReview/padreForms.html" %}
+{% extends "AppCafeReview/padre.html" %}
 
 {% block tituloForm %}
 Inicia sesión
 {% endblock %}
 
 {% block formulario %}
-    <form id="contactForm" action="" method="post" style="color: antiquewhite;"> {% csrf_token %}
+    <form id="contactForm" action="" method="POST"> {% csrf_token %}
         <table>
             {{miFormulario.as_table}}
         </table>
-        <input type="submit" value="Enviar"> 
+        <input class="btn btn-primary btn-xl disabled" id="submitButton" type="submit" value="Iniciar Sesión">
     </form>
 {% endblock %}
+

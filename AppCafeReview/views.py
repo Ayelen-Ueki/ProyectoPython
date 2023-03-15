@@ -5,6 +5,7 @@ from django.views.generic import ListView
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.views import LogoutView
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def view_reviews(request): 
@@ -55,7 +56,6 @@ def edit_review(request, reviewer):
             editar.reviewer=editardict["reviewer"]
             editar.save()
         else:
-            pass 
             miFormulario=CafeteriaFormulario(initial={"Nopmbre Cafeteria":editar.nombreCafeteria,
                                                       "Puntaje Cafeteria":editar.puntajeCafeteria,
                                                       "Puntaje Servicio":editar.puntajeServicio,
@@ -65,14 +65,14 @@ def edit_review(request, reviewer):
     return render (request, )
 
 def register_user(request):
-    if request.method=='POST':
+    if request.method == 'POST':
         miFormulario=UserCreationForm(request.POST)
         if miFormulario.is_valid():
             miFormulario.save()
             return render (request, "AppCafeReview/crearReview.html") 
     else:
         miFormulario=UserCreationForm()
-        return render(request,"AppCafeReview/registroUsuario.html", {"miFormulario":miFormulario})
+    return render(request,"AppCafeReview/registroUsuario.html", {"miFormulario":miFormulario})
     
 def login_user(request):
     if request.method == 'POST':
@@ -90,3 +90,9 @@ def login_user(request):
     else:
         miFormulario=AuthenticationForm()
     return render(request, "AppCafeReview/login.html", {"miFormulario":miFormulario})
+
+@login_required
+def inicio(request):
+    avatares=Avatar.objects.filter(user=request.user.id)
+    imagen=avatares[0].imagen.url
+    return render(request, "AppCafeReview/inicio.html", {'url': imagen})
