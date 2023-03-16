@@ -31,7 +31,7 @@ def create_review(request):
     else:
             miFormulario = CafeteriaFormulario()
  
-    return render(request, "AppCafeReview/crearReview.html", {"miFormulario": miFormulario})
+    return render(request, "AppCafeReview/crearReview.html", {"miFormulario": miFormulario}) #enviamos el formulario al template
 
 def search(request):
     return render(request, "AppCafeReview/buscarReview.html")
