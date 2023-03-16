@@ -5,7 +5,7 @@ Deja tu review!
 {% endblock %}
 
 {% block formulario %}
-    <form id="contactForm" action="" method="POST"> {% csrf_token %}
+    <form action="" method="POST" id="contactForm" > {% csrf_token %}
         <table>
             {{miFormulario.as_table}}
         </table>

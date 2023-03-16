@@ -13,7 +13,7 @@ urlpatterns = [
     path("editarReview/<reviewer>", edit_review, name="edit_review"),
     path("registroUsuario/", register_user, name="register_user"),
     path("inicioSesionUsuario/", login_user, name="login_user"),
-    path("logout/", LogoutView.as_view(template_name="AppCafeReview/logout.html"), name="logout"),
+    path("logout/", LogoutView.as_view(template_name="AppCafeReview/logout.html"), name="logout_user"),
 ]
 
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
