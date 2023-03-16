@@ -9,24 +9,23 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def view_reviews(request): 
-    allReviews = Cafeteria.objects.all()
-    return render(request,"AppCafeReview/verReviews.html", {"allReviews": allReviews } )
+    allReviews = Cafeteria.objects.all() #almaceno todas las cafeterías de la base de datos
+    return render(request,"AppCafeReview/verReviews.html", {"allReviews": allReviews } ) #guardo todas las cafeterías como un diccionario 
 
 def create_review(request): 
     if request.method == "POST":
  
             miFormulario = CafeteriaFormulario(request.POST)
-            print(miFormulario)
  
             if miFormulario.is_valid():
                   informacion = miFormulario.cleaned_data #convierte mi formulario en formato diccionario
-                  cafeteria = Cafeteria(nombreCafeteria=informacion["Nombre Cafeteria"], 
-                  puntajeCafeteria=informacion["Puntaje Cafeteria"],
-                  puntajeServicio=informacion["Puntaje Servicio"],
-                  puntajeAmbiente=informacion["Puntaje Ambiente"],
-                  fechaDeVisita=informacion["Fecha de Visita"],
-                  comentario=informacion["Comentario"], 
-                  )
+                  cafeteria = Cafeteria(nombreCafeteria=informacion["nombreCafeteria"], 
+                  puntajeCafeteria=informacion["puntajeCafeteria"],
+                  puntajeServicio=informacion["puntajeServicio"],
+                  puntajeAmbiente=informacion["puntajeAmbiente"],
+                  fechaDeVisita=informacion["fechaDeVisita"],
+                  comentario=informacion["comentario"], 
+                  ) #creamos un objeto de la clase Cafeteria
                   cafeteria.save()
                   return render(request, "AppCafeReview/verReviews.html")
     else:
@@ -94,5 +93,5 @@ def login_user(request):
 @login_required
 def inicio(request):
     avatares=Avatar.objects.filter(user=request.user.id)
-    imagen=avatares[0].imagen.url
+    imagen=avatares[0].avatar.url
     return render(request, "AppCafeReview/inicio.html", {'url': imagen})

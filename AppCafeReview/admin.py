@@ -1,5 +1,5 @@
 from django.contrib import admin
-from AppCafeReview.models import Cafeteria, Reviewer, Owner, AvatarReviewer
+from AppCafeReview.models import Cafeteria, Reviewer, Owner, Reviewer
 
 # Register your models here.
 
@@ -9,4 +9,4 @@ admin.site.register(Reviewer)
 
 admin.site.register(Owner)
 
-admin.site.register(AvatarReviewer)
+admin.site.register(Reviewer)
