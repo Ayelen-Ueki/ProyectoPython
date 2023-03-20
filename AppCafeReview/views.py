@@ -52,7 +52,7 @@ def edit_review(request, reviewer):
         miFormulario = EditarFormulario(request.POST)
         if miFormulario.is_valid():
             editardict=miFormulario.cleaned_data
-            editar.reviewer=editardict["reviewer"]
+            editar.reviewer = editardict["reviewer"]
             editar.save()
         else:
             miFormulario=CafeteriaFormulario(initial={"Nopmbre Cafeteria":editar.nombreCafeteria,

@@ -5,6 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path ("inicio/", inicio, name="inicio"), 
     path ("verReviews/", view_reviews, name="view_reviews"), 
     path("crearReview/", create_review, name="create_review"),
     path("buscarReview/", search, name="search"), 
